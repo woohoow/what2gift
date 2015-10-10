@@ -13,11 +13,12 @@
             <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
               <h2>{{name}}</h2>
               <p>{{when}}</p>
-              <p><i class="ion-ios-cart-outline assertive"></i> To buy: {{this.total_to_buy}} <br/>
-                 <i class="ion-ios-box-outline energized"></i> Bought: {{this.total_bought}}<br/>
-                 <i class="ion-bag positive"></i> Wrapped: {{this.total_wrapped}}<br/>
-                 <i class="ion-happy-outline balanced"></i> Delivered: {{this.total_delivered}}
-              </p>
+              <div class="row">
+                 <div class="col"><p><i class="ion-ios-cart-outline assertive"></i> To buy <span class="assertive">{{this.total_to_buy}}</span> </p></div>
+                 <div class="col"><p><i class="ion-ios-box-outline energized"></i> Bought <span class="energized">{{this.total_bought}}</span> </p></div>
+                 <div class="col"><p><i class="ion-bag positive"></i> Wrapped <span class="positive">{{this.total_wrapped}}</span> </p></div>
+                 <div class="col"><p><i class="ion-happy-outline balanced"></i> Delivered <span class="balanced">{{this.total_delivered}}</span> </p></div>
+             </div>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
            {{/each}}
@@ -90,17 +91,17 @@
 
        <div class="bar bar-footer">
            <div class="button-bar">
-               <a class="button button-large active button-light" href="#"><i class="ion-ios-cart-outline assertive"></i>
-                   <span class="badge badge-assertive">5</span>
+               <a class="button button-large active" href="#"><i class="ion-ios-cart-outline assertive"></i>
+                   To Buy <span class="badge badge-assertive">{{this.total_to_buy}}</span>
                </a>
                <a class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
-                   <span class="badge badge-energized">2</span>
+                   Bought <span class="badge badge-energized">{{this.total_bought}}</span>
                </a>
                <a class="button button-large" href="#"><i class="ion-bag positive"></i>
-                   <span class="badge badge-positive">3</span>
+                   Wrapped <span class="badge badge-positive">{{this.total_wrapped}}</span>
                </a>
                <a class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
-                   <span class="badge badge-balanced">0</span>
+                   Delivered <span class="badge badge-balanced">{{this.total_delivered}}</span>
                </a>
            </div>
        </div>
