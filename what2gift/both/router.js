@@ -14,6 +14,13 @@ Router.route('/contacts', {
     layoutTemplate: 'layout',
 });
 
+Router.route('/contacts/:_id', {
+    name: 'contacts_details',
+    template: 'contacts_details',
+    layoutTemplate: 'layout',
+});
+
+
 Router.route('/events', {
     name: 'events_list',
     template: 'events_list',
