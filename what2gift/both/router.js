@@ -9,8 +9,8 @@ Router.route('/', {
 });
 
 Router.route('/contacts', {
-    name: 'contacts',
-    template: 'contactsList',
+    name: 'contacts_list',
+    template: 'contacts_list',
     layoutTemplate: 'layout',
 });
 

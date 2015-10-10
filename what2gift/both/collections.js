@@ -51,7 +51,13 @@ Events.helpers({
             });
             return a.delivered;
         });
-    }
+    },
+    fors: function(){
+        // this.for + itmes.for.names
+        return _.compact(_.union(
+            _.pluck(_.flattenDeep(_.pluck(this.items,"for")),'name'),
+            this.for)).sort();
+    },
 });
 
 Schema = {};
@@ -68,6 +74,11 @@ Schema.Events = new SimpleSchema({
     for: {
         type: [String],
         optional: true,
+        defaultValue:[],
+        // autoValue: function(){
+        //     var content = this.siblingField('items');
+        //     _.
+        // }
     },
     status: {
         type: String,
