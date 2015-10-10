@@ -10,11 +10,12 @@
         {{#ionContent}}
         <div class="list">
             {{#each active_events}}
-            <a class="item item-icon-right item-button-right" href="#">
+            <a class="item item-icon-right item-button-right" href="/events/1">
               <h2>{{name}}</h2>
               <p>{{when}}</p>
               <p><i class="ion-ios-cart-outline assertive"></i> To buy: 5 <br/>
-                 <i class="ion-bag energized"></i> Wrapped: 3<br/>
+                 <i class="ion-ios-box-outline energized"></i> Bought: 2 <br/>
+                 <i class="ion-bag positive"></i> Wrapped: 3<br/>
                  <i class="ion-happy-outline balanced"></i> Delivered: 0
               </p>
               <i class="icon ion-chevron-right assertive"></i>
@@ -25,7 +26,8 @@
              <h2>Christmas 2014</h2>
              <p>December 25, 2014</p>
              <p><i class="ion-ios-cart-outline assertive"></i> To buy: 0 <br/>
-                <i class="ion-bag energized"></i> Wrapped: 3<br/>
+                <i class="ion-ios-box-outline energized"></i> Bought: 2 <br/>
+                <i class="ion-bag positive"></i> Wrapped: 3<br/>
                 <i class="ion-happy-outline balanced"></i> Delivered: 10
              </p>
 
@@ -33,7 +35,111 @@
           </a>
        </div>
 
-       {{>footerbar}}
+        {{>footerbar}}
+        {{/ionContent}}
+    {{/ionView}}
+</template>
+
+<!-- https://github.com/meteoric/contacts/blob/master/client/templates/_contactsNew.html -->
+<template name="events_new_modal">
+    {{#ionModal customTemplate=true}}
+        {{#autoForm schema="Schema.Events" collection="Events" id="EventsForm" type="insert"}}
+            <div class="bar bar-header bar-stable">
+                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
+                <h2 class="title">New Event</h2>
+                <button class="button button-positive button-clear" type="submit">Add</button>
+            </div>
+            <div class="content has-header overflow-scroll">
+                {{> afQuickFields}}
+            </div>
+        {{/autoForm}}
+    {{/ionModal}}
+</template>
+
+<template name="events_edit_modal">
+    {{#ionModal customTemplate=true}}
+        {{#autoForm schema="Schema.Events" collection="Events" doc=doc id="EventEditForm" type="update"}}
+            <div class="bar bar-header bar-stable">
+                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
+                <h2 class="title">Edit Event {{name}}</h2>
+                <button class="button button-positive button-clear" type="submit">Save</button>
+            </div>
+            <div class="content has-header overflow-scroll">
+                {{> afQuickFields}}
+            </div>
+        {{/autoForm}}
+    {{/ionModal}}
+</template>
+
+<template name="eventsDetails">
+    {{#contentFor "headerTitle"}}
+        <a class="button button-clear" href="{{pathFor 'events'}}">
+            <i class="icon ion-chevron-left"></i> Events
+        </a>
+        <h1 class="title">Christmas 2015</h1>
+        <a class="button button-clear" href="">
+            Edit <i class="icon ion-edit"></i>
+        </a>
+
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+
+        <div class="list">
+            <a class="item item-icon-right item-button-right" href="#">
+              <h2>Christmas 2015</h2>
+              <p>December 25, 2015</p>
+           </a>
+       </div>
+
+       <div class="list list-inset">
+          <div class="item item-divider">
+            Department Store
+          </div>
+
+          <a class="item item-checkbox">
+              <label class="checkbox checkbox-assertive">
+                  <input type="checkbox">
+              </label> Toy 1
+              <p>Qty: 5</p>
+          </a>
+          <a class="item item-checkbox">
+              <label class="checkbox checkbox-assertive">
+                  <input type="checkbox">
+              </label> Toy 2
+              <p>Qty: 3</p>
+          </a>
+
+          <div class="item item-divider">
+            No Store
+          </div>
+
+          <a class="item item-checkbox">
+              <label class="checkbox checkbox-assertive">
+                  <input type="checkbox">
+              </label> Item 2
+              <p>Qty: 1</p>
+          </a>
+
+       </div>
+
+       <div class="bar bar-footer">
+           <div class="button-bar">
+               <a class="button button-large active button-light" href="#"><i class="ion-ios-cart-outline assertive"></i>
+                   <span class="badge badge-assertive">5</span>
+               </a>
+               <a class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
+                   <span class="badge badge-energized">2</span>
+               </a>
+               <a class="button button-large" href="#"><i class="ion-bag positive"></i>
+                   <span class="badge badge-positive">3</span>
+               </a>
+               <a class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
+                   <span class="badge badge-balanced">0</span>
+               </a>
+           </div>
+       </div>
         {{/ionContent}}
     {{/ionView}}
 </template>

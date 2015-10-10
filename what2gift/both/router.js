@@ -19,3 +19,9 @@ Router.route('/events', {
     template: 'events_list',
     layoutTemplate: 'layout',
 });
+
+Router.route('/events/:id', {
+    name: 'events.details',
+    template: 'eventsDetails',
+    layoutTemplate: 'layout',
+});

@@ -82,7 +82,7 @@ Schema.Events = new SimpleSchema({
     "items.$.for.$.status": {
         type: String,
         defaultValue: 'to buy',
-        allowedValues: ['to buy', 'wrapped', 'delivered'],
+        allowedValues: ['to buy', 'bought', 'wrapped', 'delivered'],
     },
 
 
