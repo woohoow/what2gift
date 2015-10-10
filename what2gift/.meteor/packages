@@ -21,3 +21,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 fourseven:scss@2.0.0
 meteoric:ionic-sass
 meteoric:ionicons-sass
+iron:router
+meteoric:ionic

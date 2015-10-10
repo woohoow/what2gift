@@ -1,14 +1,27 @@
 <head>
-  <title>what2gift</title>
+    <title>What 2 Gift</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 </head>
 
-<body>
-  <h1>Welcome to Meteor!</h1>
+<body></body>
 
-  {{> hello}}
-</body>
+<template name="layout">
+  {{#ionBody}}
+    {{> ionNavBar class="bar-positive"}}
+    {{#ionNavView}}
+      {{> yield}}
+    {{/ionNavView}}
+  {{/ionBody}}
+</template>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="home">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">What 2 Gift</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+        Welcome
+        {{/ionContent}}
+    {{/ionView}}
 </template>
