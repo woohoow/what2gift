@@ -12,24 +12,32 @@ Template.home.events({
 });
 
 Template.events_list.helpers({
-    'active_events': function(){
-        return Events.find({status:{"$ne":'deleted'}});
+    'active_events': function() {
+        return Events.find({
+            status: {
+                "$ne": 'deleted'
+            }
+        });
     }
 });
 
 Template.events_edit_modal.helpers({
-    'current_event': function(){
+    'current_event': function() {
         var template = Template.instance();
-        return Events.findOne({_id: template.data.id});
+        return Events.findOne({
+            _id: template.data.id
+        });
     }
 });
 
-Template.events_details.circularOptions = function() {
-    return {
-        'canvasSize': 100,
-        'arcWidth': 10,
-        'sessionValueKey': 'progressPercent',
-        'tweenDuration': 500,
-        'progressClass': 'progress-positive',
+Template.events_details.helpers({
+    circularOptions: function() {
+        return {
+            'canvasSize': 100,
+            'arcWidth': 10,
+            'sessionValueKey': 'progressPercent',
+            'tweenDuration': 500,
+            'progressClass': 'progress-positive',
+        };
     }
-}
+});
