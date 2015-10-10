@@ -12,7 +12,7 @@ Template.home.events({
 });
 
 Template.events_list.helpers({
-    'active_events': function() {
+    'events': function() {
         return Events.find({
             status: {
                 "$ne": 'deleted'
@@ -32,10 +32,12 @@ Template.events_edit_modal.helpers({
 
 Template.events_details.helpers({
     circularOptions: function() {
+        var template = Template.instance();
+        Session.set('progress', Events.findOne(template.data._id).progress());
         return {
             'canvasSize': 100,
             'arcWidth': 10,
-            'sessionValueKey': 'progressPercent',
+            'sessionValueKey': 'progress',
             'tweenDuration': 500,
             'progressClass': 'progress-positive',
         };

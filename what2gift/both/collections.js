@@ -2,6 +2,58 @@ Events = new Mongo.Collection('events', {
     idGeneration: 'STRING'
 });
 
+Events.helpers({
+    progress: function() {
+        var total = _.sum(this.items, function(item) {
+            return item.total_items;
+        });
+        var delivered = _.sum(this.items, function(item) {
+            var a = _.countBy(item.for, function(for_) {
+                return for_.status;
+            });
+            return a.delivered;
+        });
+        return (delivered * 100 / total);
+    },
+    total: function() {
+        return _.sum(this.items, function(item) {
+            return item.total_items;
+        });
+    },
+    total_to_buy: function() {
+        return _.sum(this.items, function(item) {
+            var a = _.countBy(item.for, function(for_) {
+                return for_.status;
+            });
+            return a['to buy'];
+        });
+    },
+    total_bought: function() {
+        return _.sum(this.items, function(item) {
+            var a = _.countBy(item.for, function(for_) {
+                return for_.status;
+            });
+            return a.bought;
+        });
+    },
+    total_wrapped: function() {
+        return _.sum(this.items, function(item) {
+            var a = _.countBy(item.for, function(for_) {
+                return for_.status;
+            });
+            return a.wrapped;
+        });
+    },
+    total_delivered: function() {
+        return _.sum(this.items, function(item) {
+            var a = _.countBy(item.for, function(for_) {
+                return for_.status;
+            });
+            return a.delivered;
+        });
+    }
+});
+
 Schema = {};
 
 Schema.Events = new SimpleSchema({
@@ -15,7 +67,7 @@ Schema.Events = new SimpleSchema({
     },
     for: {
         type: [String],
-        optional: true
+        optional: true,
     },
     status: {
         type: String,
@@ -52,6 +104,7 @@ Schema.Events = new SimpleSchema({
     items: {
         type: [Object],
         optional: true,
+        blackbox: true,
     },
     "items.$._id": {
         type: String,
@@ -60,13 +113,13 @@ Schema.Events = new SimpleSchema({
             label: false
         },
         autoValue: function() {
-              return Random.id();
+            return Random.id();
         }
     },
     "items.$.name": {
         type: String
     },
-    "items.$.total_items":{
+    "items.$.total_items": {
         type: Number
     },
 
@@ -76,7 +129,7 @@ Schema.Events = new SimpleSchema({
     "items.$.for.$._id": {
         type: String,
         optional: true,
-        autoform:{
+        autoform: {
             type: "hidden",
             label: false,
         },

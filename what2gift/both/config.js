@@ -1,0 +1,3 @@
+// use lodash
+_ = lodash;
+

@@ -9,30 +9,18 @@
     {{#ionView}}
         {{#ionContent}}
         <div class="list">
-            {{#each active_events}}
+            {{#each events}}
             <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
               <h2>{{name}}</h2>
               <p>{{when}}</p>
-              <p><i class="ion-ios-cart-outline assertive"></i> To buy: 5 <br/>
-                 <i class="ion-ios-box-outline energized"></i> Bought: 2 <br/>
-                 <i class="ion-bag positive"></i> Wrapped: 3<br/>
-                 <i class="ion-happy-outline balanced"></i> Delivered: 0
+              <p><i class="ion-ios-cart-outline assertive"></i> To buy: {{this.total_to_buy}} <br/>
+                 <i class="ion-ios-box-outline energized"></i> Bought: {{this.total_bought}}<br/>
+                 <i class="ion-bag positive"></i> Wrapped: {{this.total_wrapped}}<br/>
+                 <i class="ion-happy-outline balanced"></i> Delivered: {{this.total_delivered}}
               </p>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
            {{/each}}
-
-           <a class="item item-icon-right item-button-right" href="#">
-             <h2>Christmas 2014</h2>
-             <p>December 25, 2014</p>
-             <p><i class="ion-ios-cart-outline assertive"></i> To buy: 0 <br/>
-                <i class="ion-ios-box-outline energized"></i> Bought: 2 <br/>
-                <i class="ion-bag positive"></i> Wrapped: 3<br/>
-                <i class="ion-happy-outline balanced"></i> Delivered: 10
-             </p>
-
-             <i class="icon ion-chevron-right assertive"></i>
-          </a>
        </div>
        <div class="padding"></div>
        <div class="padding"></div>
