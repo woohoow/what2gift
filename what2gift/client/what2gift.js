@@ -16,3 +16,10 @@ Template.events_list.helpers({
         return Events.find({status:{"$ne":'deleted'}});
     }
 });
+
+Template.events_edit_modal.helpers({
+    'current_event': function(){
+        var template = Template.instance();        
+        return Events.findOne({_id: template.data.id});
+    }
+});

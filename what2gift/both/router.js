@@ -2,10 +2,10 @@ Router.configure({
   layoutTemplate: 'layout'
 });
 
-Router.map(function() {
-  this.route('home', {
-    path: '/'
-  });
+Router.route('/', {
+  name: 'home',
+  template: 'home',
+  'layoutTemplate': 'layout',
 });
 
 Router.route('/contacts', {
@@ -15,13 +15,16 @@ Router.route('/contacts', {
 });
 
 Router.route('/events', {
-    name: 'events',
+    name: 'events_list',
     template: 'events_list',
     layoutTemplate: 'layout',
 });
 
-Router.route('/events/:id', {
-    name: 'events.details',
-    template: 'eventsDetails',
+Router.route('/events/:_id', {
+    name: 'events_details',
+    template: 'events_details',
     layoutTemplate: 'layout',
+    data: function(){
+        return Events.findOne({_id: this.params._id});
+    }
 });

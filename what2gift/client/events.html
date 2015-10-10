@@ -10,7 +10,7 @@
         {{#ionContent}}
         <div class="list">
             {{#each active_events}}
-            <a class="item item-icon-right item-button-right" href="/events/1">
+            <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
               <h2>{{name}}</h2>
               <p>{{when}}</p>
               <p><i class="ion-ios-cart-outline assertive"></i> To buy: 5 <br/>
@@ -40,47 +40,15 @@
     {{/ionView}}
 </template>
 
-<!-- https://github.com/meteoric/contacts/blob/master/client/templates/_contactsNew.html -->
-<template name="events_new_modal">
-    {{#ionModal customTemplate=true}}
-        {{#autoForm schema="Schema.Events" collection="Events" id="EventsForm" type="insert"}}
-            <div class="bar bar-header bar-stable">
-                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
-                <h2 class="title">New Event</h2>
-                <button class="button button-positive button-clear" type="submit">Add</button>
-            </div>
-            <div class="content has-header overflow-scroll">
-                {{> afQuickFields}}
-            </div>
-        {{/autoForm}}
-    {{/ionModal}}
-</template>
-
-<template name="events_edit_modal">
-    {{#ionModal customTemplate=true}}
-        {{#autoForm schema="Schema.Events" collection="Events" doc=doc id="EventEditForm" type="update"}}
-            <div class="bar bar-header bar-stable">
-                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
-                <h2 class="title">Edit Event {{name}}</h2>
-                <button class="button button-positive button-clear" type="submit">Save</button>
-            </div>
-            <div class="content has-header overflow-scroll">
-                {{> afQuickFields}}
-            </div>
-        {{/autoForm}}
-    {{/ionModal}}
-</template>
-
-<template name="eventsDetails">
+<template name="events_details">
     {{#contentFor "headerTitle"}}
-        <a class="button button-clear" href="{{pathFor 'events'}}">
+        <a class="button button-clear" href="{{pathFor 'events_list'}}">
             <i class="icon ion-chevron-left"></i> Events
         </a>
         <h1 class="title">Christmas 2015</h1>
-        <a class="button button-clear" href="">
+        <button class="button button-clear" data-ion-modal="events_edit_modal" data-id="{{_id}}">
             Edit <i class="icon ion-edit"></i>
-        </a>
-
+        </button>
     {{/contentFor}}
 
     {{#ionView}}
@@ -162,7 +130,7 @@
 
 <template name="events_edit_modal">
     {{#ionModal customTemplate=true}}
-        {{#autoForm schema="Schema.Events" collection="Events" doc=doc id="EventEditForm" type="update"}}
+        {{#autoForm schema="Schema.Events" collection="Events" doc=current_event id="EventEditForm" type="update"}}
             <div class="bar bar-header bar-stable">
                 <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
                 <h2 class="title">Edit Event {{name}}</h2>
