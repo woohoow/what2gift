@@ -13,6 +13,10 @@ Schema.Events = new SimpleSchema({
     when: {
         type: Date
     },
+    for: {
+        type: [String],
+        optional: true
+    },
     status: {
         type: String,
         defaultValue: 'inactive',
@@ -47,6 +51,7 @@ Schema.Events = new SimpleSchema({
     // list of items for the event
     items: {
         type: [Object],
+        optional: true,
     },
     "items.$._id": {
         type: String,
@@ -84,6 +89,7 @@ Schema.Events = new SimpleSchema({
         defaultValue: 'to buy',
         allowedValues: ['to buy', 'bought', 'wrapped', 'delivered'],
     },
+
 
 
     //internal fields
