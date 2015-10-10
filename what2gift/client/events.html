@@ -34,9 +34,13 @@
              <i class="icon ion-chevron-right assertive"></i>
           </a>
        </div>
+       <div class="padding"></div>
+       <div class="padding"></div>
+       <div class="padding"></div>
 
-        {{>footerbar}}
         {{/ionContent}}
+        {{>footerbar}}
+
     {{/ionView}}
 </template>
 
@@ -45,7 +49,7 @@
         <a class="button button-clear" href="{{pathFor 'events_list'}}">
             <i class="icon ion-chevron-left"></i> Events
         </a>
-        <h1 class="title">Christmas 2015</h1>
+        <h1 class="title">{{name}}</h1>
         <button class="button button-clear" data-ion-modal="events_edit_modal" data-id="{{_id}}">
             Edit <i class="icon ion-edit"></i>
         </button>
@@ -56,8 +60,8 @@
 
         <div class="list">
             <a class="item">
-                <h2>Christmas 2015</h2>
-                <p>December 25, 2015
+                <h2>{{name}}</h2>
+                <p>{{when}}
                 {{#with circularOptions}}
                 {{> circularProgress}}
                 {{/with}}
