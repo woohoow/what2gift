@@ -10,3 +10,9 @@ Template.home.events({
         Session.set('counter', Session.get('counter') + 1);
     }
 });
+
+Template.events_list.helpers({
+    'active_events': function(){
+        return Events.find({status:{"$ne":'deleted'}});
+    }
+});
