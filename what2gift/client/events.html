@@ -55,10 +55,14 @@
         {{#ionContent}}
 
         <div class="list">
-            <a class="item item-icon-right item-button-right" href="#">
-              <h2>Christmas 2015</h2>
-              <p>December 25, 2015</p>
-           </a>
+            <a class="item">
+                <h2>Christmas 2015</h2>
+                <p>December 25, 2015
+                {{#with circularOptions}}
+                {{> circularProgress}}
+                {{/with}}
+                </p>
+            </a>
        </div>
 
        <div class="list list-inset">

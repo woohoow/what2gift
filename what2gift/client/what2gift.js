@@ -19,7 +19,17 @@ Template.events_list.helpers({
 
 Template.events_edit_modal.helpers({
     'current_event': function(){
-        var template = Template.instance();        
+        var template = Template.instance();
         return Events.findOne({_id: template.data.id});
     }
 });
+
+Template.events_details.circularOptions = function() {
+    return {
+        'canvasSize': 100,
+        'arcWidth': 10,
+        'sessionValueKey': 'progressPercent',
+        'tweenDuration': 500,
+        'progressClass': 'progress-positive',
+    }
+}
