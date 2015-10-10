@@ -1,0 +1,33 @@
+<template name="contactsList">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Contacts</h1>
+        <button class="button button-clear">
+            <i class="icon ion-ios-plus-empty"></i>
+        </button>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+
+        <div class="list">
+            <a class="item item-icon-right item-button-right" href="#">
+              <h2>Kevin</h2>
+              <p>January 1, 1980</p>
+              <i class="icon ion-chevron-right assertive"></i>
+           </a>
+           <a class="item item-icon-right item-button-right" href="#">
+             <h2>Stuart</h2>
+             <p>January 1, 1980</p>
+             <i class="icon ion-chevron-right assertive"></i>
+          </a>
+          <a class="item item-icon-right item-button-right" href="#">
+            <h2>Bob</h2>
+            <p>January 1, 1980</p>
+            <i class="icon ion-chevron-right assertive"></i>
+         </a>
+       </div>
+
+       {{>footerbar}}
+        {{/ionContent}}
+    {{/ionView}}
+</template>
