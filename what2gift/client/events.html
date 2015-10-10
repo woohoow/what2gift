@@ -1,24 +1,26 @@
-<template name="eventsList">
+<template name="events_list">
     {{#contentFor "headerTitle"}}
         <h1 class="title">Events</h1>
-        <button class="button button-clear">
+        <button class="button button-clear" data-ion-modal="events_new_modal">
             <i class="icon ion-ios-plus-empty"></i>
         </button>
     {{/contentFor}}
 
     {{#ionView}}
         {{#ionContent}}
-
         <div class="list">
+            {{#each active_events}}
             <a class="item item-icon-right item-button-right" href="#">
-              <h2>Christmas 2015</h2>
-              <p>December 25, 2015</p>
+              <h2>{{name}}</h2>
+              <p>{{when}}</p>
               <p><i class="ion-ios-cart-outline assertive"></i> To buy: 5 <br/>
                  <i class="ion-bag energized"></i> Wrapped: 3<br/>
                  <i class="ion-happy-outline balanced"></i> Delivered: 0
               </p>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
+           {{/each}}
+
            <a class="item item-icon-right item-button-right" href="#">
              <h2>Christmas 2014</h2>
              <p>December 25, 2014</p>
@@ -34,4 +36,35 @@
        {{>footerbar}}
         {{/ionContent}}
     {{/ionView}}
+</template>
+
+<!-- https://github.com/meteoric/contacts/blob/master/client/templates/_contactsNew.html -->
+<template name="events_new_modal">
+    {{#ionModal customTemplate=true}}
+        {{#autoForm schema="Schema.Events" collection="Events" id="EventsForm" type="insert"}}
+            <div class="bar bar-header bar-stable">
+                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
+                <h2 class="title">New Event</h2>
+                <button class="button button-positive button-clear" type="submit">Add</button>
+            </div>
+            <div class="content has-header overflow-scroll">
+                {{> afQuickFields}}
+            </div>
+        {{/autoForm}}
+    {{/ionModal}}
+</template>
+
+<template name="events_edit_modal">
+    {{#ionModal customTemplate=true}}
+        {{#autoForm schema="Schema.Events" collection="Events" doc=doc id="EventEditForm" type="update"}}
+            <div class="bar bar-header bar-stable">
+                <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
+                <h2 class="title">Edit Event {{name}}</h2>
+                <button class="button button-positive button-clear" type="submit">Save</button>
+            </div>
+            <div class="content has-header overflow-scroll">
+                {{> afQuickFields}}
+            </div>
+        {{/autoForm}}
+    {{/ionModal}}
 </template>

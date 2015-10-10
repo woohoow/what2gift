@@ -16,6 +16,6 @@ Router.route('/contacts', {
 
 Router.route('/events', {
     name: 'events',
-    template: 'eventsList',
+    template: 'events_list',
     layoutTemplate: 'layout',
 });
