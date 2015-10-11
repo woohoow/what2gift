@@ -87,29 +87,32 @@ Schema.Events = new SimpleSchema({
     },
 
     //owner of the event
-    // user: {
-    //     type: Object,
-    // },
-    // "user._id": {
-    //     type: String,
-    //     autoform: {
-    //         type: "hidden",
-    //         label: false
-    //     },
-    //     autoValue: function() {
-    //         return Meteor.userId();
-    //     }
-    // },
-    // "user.username": {
-    //     type: String,
-    //     autoform: {
-    //         type: "hidden",
-    //         label: false
-    //     },
-    //     autoValue: function() {
-    //         return Meteor.user().username;
-    //     }
-    // },
+    user: {
+        type: Object,
+        autoform: {
+            omit: true,
+        },
+    },
+    "user._id": {
+        type: String,
+        autoform: {
+            type: "hidden",
+            label: false
+        },
+        autoValue: function() {
+            return Meteor.userId();
+        }
+    },
+    "user.username": {
+        type: String,
+        autoform: {
+            type: "hidden",
+            label: false
+        },
+        autoValue: function() {
+            return Meteor.user().username;
+        }
+    },
 
     // list of items for the event
     items: {
@@ -151,7 +154,7 @@ Schema.Events = new SimpleSchema({
     },
     "items.$.for.$.status": {
         type: String,
-        defaultValue: 'to buy',
+        // defaultValue: 'to buy',
         allowedValues: ['to buy', 'bought', 'wrapped', 'delivered'],
     },
 
