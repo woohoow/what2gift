@@ -59,48 +59,42 @@
        </div>
 
        <div class="list list-inset">
+          {{#unless $.Session.get 'activeItemStatus'}}
+          {{#each this.items}}
+          <a class="item item-checkbox">
+              <label class="checkbox checkbox-assertive">
+                  <input type="checkbox">
+              </label> {{name}}
+              <p>Qty: {{total_items}}</p>
+          </a>
+          {{/each}}
+          {{else}}
           <div class="item item-divider">
-            Department Store
+            {{$.Session.get 'activeItemStatus'}}
           </div>
-
+          {{#each this.items}}
+          {{#with summary_status this}}
           <a class="item item-checkbox">
-              <label class="checkbox checkbox-assertive">
-                  <input type="checkbox">
-              </label> Toy 1
-              <p>Qty: 5</p>
+              Item: {{this.name}}
+              <p>Qty: {{this.sub_total}}</p>
           </a>
-          <a class="item item-checkbox">
-              <label class="checkbox checkbox-assertive">
-                  <input type="checkbox">
-              </label> Toy 2
-              <p>Qty: 3</p>
-          </a>
-
-          <div class="item item-divider">
-            No Store
-          </div>
-
-          <a class="item item-checkbox">
-              <label class="checkbox checkbox-assertive">
-                  <input type="checkbox">
-              </label> Item 2
-              <p>Qty: 1</p>
-          </a>
-
+          {{/with}}
+          {{/each}}
+          {{/unless}}
        </div>
 
        <div class="bar bar-footer">
            <div class="button-bar">
-               <a class="button button-large active" href="#"><i class="ion-ios-cart-outline assertive"></i>
+               <a name="to_buy" class="button button-large" href="#"><i class="ion-ios-cart-outline assertive"></i>
                    To Buy <span class="badge badge-assertive">{{this.total_to_buy}}</span>
                </a>
-               <a class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
+               <a name="bought" class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
                    Bought <span class="badge badge-energized">{{this.total_bought}}</span>
                </a>
-               <a class="button button-large" href="#"><i class="ion-bag positive"></i>
+               <a name="wrapped" class="button button-large" href="#"><i class="ion-bag positive"></i>
                    Wrapped <span class="badge badge-positive">{{this.total_wrapped}}</span>
                </a>
-               <a class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
+               <a name="delivered" class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
                    Delivered <span class="badge badge-balanced">{{this.total_delivered}}</span>
                </a>
            </div>

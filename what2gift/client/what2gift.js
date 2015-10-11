@@ -17,6 +17,11 @@ Template.events_edit_modal.helpers({
     }
 });
 
+Template.events_details.onDestroyed(function(){
+    Session.set('activeItemStatus', undefined);
+    delete Session.keys.activeItemStatus;
+});
+
 Template.events_details.helpers({
     circularOptions: function() {
         var template = Template.instance();
@@ -28,7 +33,38 @@ Template.events_details.helpers({
             'tweenDuration': 500,
             'progressClass': 'progress-positive',
         };
-    }
+    },
+    summary_status: function(item){
+        console.log('item', item);
+        var status = Session.get('activeItemStatus');
+        var res={name:item.name};
+        res.sub_total = _.countBy(item.for, function(for_) {
+                return for_.status;
+        })[status];
+        if(res.sub_total===undefined){
+            res.sub_total = 0;
+        }
+        return res;
+    },
+});
+
+Template.events_details.events({
+    'click a[name="to_buy"]': function(e, t) {
+        console.log('to_buy');
+        Session.set('activeItemStatus','to buy');
+    },
+    'click a[name="bought"]': function(e, t) {
+        console.log('bought');
+        Session.set('activeItemStatus','bought');
+    },
+    'click a[name="wrapped"]': function(e, t) {
+        console.log('wrapped');
+        Session.set('activeItemStatus','wrapped');
+    },
+    'click a[name="delivered"]': function(e, t) {
+        console.log('delivered');
+        Session.set('activeItemStatus','delivered');
+    },
 });
 
 Template.contacts_list.helpers({
