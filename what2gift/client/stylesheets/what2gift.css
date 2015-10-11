@@ -11,6 +11,13 @@
 	padding: .6%;
 }
 
+.splash-text {
+    font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	padding: .6%;
+
+}
+
 .progress-positive {
     fill: #33cd5f;
 }

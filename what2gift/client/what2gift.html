@@ -23,6 +23,15 @@
         {{#ionContent}}
         <div class="container-splash">
         <h1 class="splash">What do you want to give today?</h1>
+
+        {{#if currentUser}}
+            <p class="splash-text">
+                <a  class="button button-outline button-assertive" href="{{pathFor 'logout'}}">Log Out</a>
+            </p>
+        {{else}}
+            <p class="splash-text"><a class="button button-outline button-assertive" href="{{pathFor 'login'}}">Login</a></p>
+        {{/if}}
+
         </div>
         {{>footerbar}}
         {{/ionContent}}
