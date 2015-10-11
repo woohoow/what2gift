@@ -116,6 +116,7 @@ Schema.Events = new SimpleSchema({
         type: [Object],
         optional: true,
         blackbox: true,
+        defaultValue:[],
     },
     "items.$._id": {
         type: String,
