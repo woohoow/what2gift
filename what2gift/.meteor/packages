@@ -16,7 +16,6 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-insecure                # Allow all DB writes from clients (for prototyping)
 fourseven:scss@2.0.0
 meteoric:ionic-sass
 meteoric:ionicons-sass
@@ -30,3 +29,4 @@ valedaemon:circular-progress
 dburles:collection-helpers
 stevezhu:lodash
 raix:handlebar-helpers
+accounts-password
