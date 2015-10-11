@@ -48,7 +48,7 @@ Template.contacts_list.helpers({
     all_fors: function(){
         //get all fors names based on subscription
         var res = Events.find({},{fields:{"for":1,"items.for.name":1}}).fetch();
-        var all_fors = _.union(_.pluck(res,"for"));
+        var all_fors = _.union(_.flattenDeep(_.pluck(res,"for")));
         return _.compact(
                 _.union(
                     _.pluck(
