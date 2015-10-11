@@ -30,3 +30,7 @@ dburles:collection-helpers
 stevezhu:lodash
 raix:handlebar-helpers
 accounts-password
+useraccounts:ionic
+useraccounts:iron-routing
+aldeed:template-extension
+ongoworks:security
