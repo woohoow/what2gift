@@ -1,5 +1,11 @@
 <template name="events_list">
     {{#contentFor "headerTitle"}}
+    {{#if currentUser}}
+    <a class="button button-clear" href="{{pathFor 'logout'}}">
+        <i class="icon ion-power"></i> Logout
+    </a>
+    {{/if}}
+
         <h1 class="title">Events</h1>
         <button class="button button-clear" data-ion-modal="events_new_modal">
             <i class="icon ion-ios-plus-empty"></i>
@@ -62,9 +68,7 @@
           {{#unless $.Session.get 'activeItemStatus'}}
           {{#each this.items}}
           <a class="item item-checkbox">
-              <label class="checkbox checkbox-assertive">
-                  <input type="checkbox">
-              </label> {{name}}
+              {{name}}
               <p>Qty: {{total_items}}</p>
           </a>
           {{/each}}
@@ -75,7 +79,7 @@
           {{#each this.items}}
           {{#with summary_status this}}
           <a class="item item-checkbox">
-              Item: {{this.name}}
+              {{this.name}}
               <p>Qty: {{this.sub_total}}</p>
           </a>
           {{/with}}

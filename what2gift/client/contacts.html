@@ -1,5 +1,11 @@
 <template name="contacts_list">
     {{#contentFor "headerTitle"}}
+    {{#if currentUser}}
+    <a class="button button-clear" href="{{pathFor 'logout'}}">
+        <i class="icon ion-power"></i> Logout
+    </a>
+    {{/if}}
+
         <h1 class="title">Contacts</h1>
     {{/contentFor}}
 
