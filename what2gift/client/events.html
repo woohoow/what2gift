@@ -21,7 +21,7 @@
             {{#each events}}
             <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
               <h2>{{name}}</h2>
-              <p>{{when}}</p>
+              <p>{{FormatDate when}}</p>
               <div class="list">
                  <div class="item"><i class="ion-ios-cart-outline assertive"></i> To buy <span class="badge badge-assertive">{{this.total_to_buy}}</span></div>
                  <div class="item"><i class="ion-ios-box-outline energized"></i> Bought <span class="badge badge-energized">{{this.total_bought}}</span></div>
@@ -63,7 +63,7 @@
         <div class="list">
             <a class="item">
                 <h2>{{name}}</h2>
-                <p>{{when}}
+                <p>{{FormatDate when}}
                 {{#with circularOptions}}
                 {{> circularProgress}}
                 {{/with}}
