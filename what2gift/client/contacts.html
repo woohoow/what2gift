@@ -1,9 +1,6 @@
 <template name="contacts_list">
     {{#contentFor "headerTitle"}}
         <h1 class="title">Contacts</h1>
-        <button class="button button-clear">
-            <i class="icon ion-ios-plus-empty"></i>
-        </button>
     {{/contentFor}}
 
     {{#ionView}}
@@ -11,7 +8,7 @@
 
         <div class="list">
             {{#each all_fors}}
-            <a class="item item-icon-right item-button-right" href="/contacts/1">
+            <a class="item item-icon-right item-button-right" href="/contacts/{{this}}">
               <h2>{{this}}</h2>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
@@ -45,26 +42,14 @@
                 {{#each items}}
                     {{#each for}}
                     {{#if $eq my_events.to this.name}}
-                    <div class="item"><i class="ion-happy-outline balanced"></i>
-                        {{../name}} - {{name}} - {{status}}
+                    <div class="item"><i class="{{iconify status}}"></i>
+                        {{../name}} - {{status}}
                         <span class="item-note">{{../../name}} - {{../../when}} </span>
                     </div>
                     {{/if}}
                     {{/each}}
                 {{/each}}
             {{/each}}
-            <div class="item"><i class="ion-ios-box-outline energized"></i>
-                Item 2
-                <span class="item-note">Event2 - 12/25/2014 {{when}} </span>
-            </div>
-            <div class="item"><i class="ion-bag positive"></i>
-                Item 3
-                <span class="item-note">Event2 - 12/25/2014 {{when}} </span>
-            </div>
-            <div class="item"><i class="ion-ios-cart-outline assertive"></i>
-                Item 4
-                <span class="item-note">Event3 - 12/25/2013 {{when}} </span>
-            </div>
        </div>
 
         {{/ionContent}}

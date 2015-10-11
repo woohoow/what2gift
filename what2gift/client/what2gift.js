@@ -54,5 +54,15 @@ Template.contacts_details.helpers({
         var to = Router.current().params.name;
         return {to:to, events:Events.find({"items.for.name":to},
             {fields:{"name":1, "when":1, "items.name":1, "items.for":1}}).fetch()};
+    },
+    iconify: function(status){
+        var icon_map={
+            'to buy': 'ion-ios-cart-outline assertive',
+            'bought': 'ion-ios-box-outline energized',
+            'wrapped': 'ion-bag positive',
+            'delivered': 'ion-happy-outline balanced',
+
+        };
+        return icon_map[status];
     }
 });
