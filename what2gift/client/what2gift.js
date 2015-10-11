@@ -34,16 +34,25 @@ Template.events_details.helpers({
 Template.contacts_list.helpers({
     all_fors: function(){
         //get all fors names based on subscription
-        var res = Events.find({},{fields:{"for":1,"items.for.name":1}}).fetch();
+        var events = Events.find({},{fields:{"for":1,"items.for.name":1}}).fetch();
         var all_fors = _.union(_.flattenDeep(_.pluck(res,"for")));
         return _.compact(
                 _.union(
                     _.pluck(
                         _.flattenDeep(
                             _.pluck(
-                                _.flattenDeep(_.pluck(res,"items")),
+                                _.flattenDeep(_.pluck(events,"items")),
                                 "for")),
                         'name'),
                 all_fors)).sort();
     }
-})
+});
+
+Template.contacts_details.helpers({
+    my_events: function(){
+        //get all events for a user
+        var to = Router.current().params.name;
+        return {to:to, events:Events.find({"items.for.name":to},
+            {fields:{"name":1, "when":1, "items.name":1, "items.for":1}}).fetch()};
+    }
+});

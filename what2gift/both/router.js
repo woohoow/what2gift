@@ -14,7 +14,7 @@ Router.route('/contacts', {
     layoutTemplate: 'layout',
 });
 
-Router.route('/contacts/:_id', {
+Router.route('/contacts/:name', {
     name: 'contacts_details',
     template: 'contacts_details',
     layoutTemplate: 'layout',
