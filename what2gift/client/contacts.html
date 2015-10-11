@@ -1,15 +1,17 @@
 <template name="contacts_list">
     {{#contentFor "headerTitle"}}
-    {{#if currentUser}}
-    <a class="button button-clear" href="{{pathFor 'logout'}}">
-        <i class="icon ion-power"></i> Logout
-    </a>
-    {{/if}}
-
         <h1 class="title">Contacts</h1>
     {{/contentFor}}
 
     {{#ionView}}
+        {{#ionSubheaderBar}}
+            {{#if currentUser}}
+            <a class="button button-assertive button-clear" href="{{pathFor 'logout'}}">
+                <i class="icon ion-power"></i> Logout
+            </a>
+            {{/if}}
+        {{/ionSubheaderBar}}
+
         {{#ionContent}}
 
         <div class="list">
@@ -34,13 +36,16 @@
 
 <template name="contacts_details">
     {{#contentFor "headerTitle"}}
-        <a class="button button-clear" href="{{pathFor 'contacts_list'}}">
-            <i class="icon ion-chevron-left"></i> Contacts
-        </a>
         <h1 class="title">{{my_events.to}}</h1>
     {{/contentFor}}
 
     {{#ionView}}
+    {{#ionSubheaderBar}}
+        <a class="button button-assertive button-clear" href="{{pathFor 'contacts_list'}}">
+            <i class="icon ion-chevron-left"></i> Contacts
+        </a>
+    {{/ionSubheaderBar}}
+
         {{#ionContent}}
 
         <div class="list list-inset">

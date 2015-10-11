@@ -1,18 +1,21 @@
 <template name="events_list">
     {{#contentFor "headerTitle"}}
-    {{#if currentUser}}
-    <a class="button button-clear" href="{{pathFor 'logout'}}">
-        <i class="icon ion-power"></i> Logout
-    </a>
-    {{/if}}
-
         <h1 class="title">Events</h1>
-        <button class="button button-clear" data-ion-modal="events_new_modal">
-            <i class="icon ion-ios-plus-empty"></i>
-        </button>
     {{/contentFor}}
 
     {{#ionView}}
+        {{#ionSubheaderBar}}
+            {{#if currentUser}}
+            <a class="button button-assertive button-clear" href="{{pathFor 'logout'}}">
+                <i class="icon ion-power"></i> Logout
+            </a>
+            {{/if}}
+            <button class="button button-assertive button-clear" data-ion-modal="events_new_modal">
+                <i class="icon ion-ios-plus-empty"></i>
+            </button>
+
+        {{/ionSubheaderBar}}
+
         {{#ionContent}}
         <div class="list">
             {{#each events}}
@@ -41,16 +44,20 @@
 
 <template name="events_details">
     {{#contentFor "headerTitle"}}
-        <a class="button button-clear" href="{{pathFor 'events_list'}}">
-            <i class="icon ion-chevron-left"></i> Events
-        </a>
         <h1 class="title">{{name}}</h1>
-        <button class="button button-clear" data-ion-modal="events_edit_modal" data-id="{{_id}}">
-            Edit <i class="icon ion-edit"></i>
-        </button>
     {{/contentFor}}
 
     {{#ionView}}
+        {{#ionSubheaderBar}}
+            <a class="button button-assertive button-clear" href="{{pathFor 'events_list'}}">
+                <i class="icon ion-chevron-left"></i> Events
+            </a>
+            <button class="button button-assertive button-clear" data-ion-modal="events_edit_modal" data-id="{{_id}}">
+                Edit <i class="icon ion-edit"></i>
+            </button>
+
+        {{/ionSubheaderBar}}
+
         {{#ionContent}}
 
         <div class="list">
