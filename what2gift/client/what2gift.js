@@ -104,3 +104,7 @@ Template.contacts_details.helpers({
         return icon_map[status];
     }
 });
+
+UI.registerHelper('FormatDate', function(date){
+    return moment(date).format("ll");
+})

@@ -55,7 +55,7 @@
                     {{#if $eq my_events.to this.name}}
                     <div class="item"><i class="{{iconify status}}"></i>
                         {{../name}} - {{status}}
-                        <span class="item-note">{{../../name}} - {{../../when}} </span>
+                        <span class="item-note">{{../../name}} - {{FormatDate ../../when}} </span>
                     </div>
                     {{/if}}
                     {{/each}}
