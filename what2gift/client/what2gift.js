@@ -1,3 +1,5 @@
+Template.appAtPwdFormBtn.replaces('atPwdFormBtn');
+
 Template.events_list.helpers({
     'events': function() {
         return Events.find({

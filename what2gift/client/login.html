@@ -1,0 +1,25 @@
+<template name="login">
+    {{#contentFor "headerTitle"}}
+        <h1 class="title">Log In</h1>
+    {{/contentFor}}
+
+    {{#ionView}}
+        {{#ionContent}}
+            {{#if currentUser}}
+                <div class="padding">
+                    <button class="button button-assertive button-block" data-action="logout">Log Out</button>
+                </div>
+                {{else}}
+                {{> atForm}}
+            {{/if}}
+        {{/ionContent}}
+    {{/ionView}}
+</template>
+
+<template name="appAtPwdFormBtn">
+    <div class="padding">
+        <button class="at-btn button button-assertive button-block submit" id="at-btn" type="submit">
+            {{buttonText}}
+        </button>
+    </div>
+</template>

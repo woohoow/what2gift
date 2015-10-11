@@ -2,6 +2,28 @@ Router.configure({
   layoutTemplate: 'layout'
 });
 
+// https://github.com/meteor-useraccounts/core/issues/192
+AccountsTemplates.configureRoute('signIn', {
+    name: 'login',
+    path: '/login',
+    template: 'login',
+    layoutTemplate: 'layout',
+    redirect: 'home',
+});
+AccountsTemplates.configureRoute('forgotPwd');
+AccountsTemplates.configureRoute('changePwd');
+AccountsTemplates.configureRoute('resetPwd');
+
+Router.route('/logout', {
+    name: 'logout',
+    // template: 'login',
+    onBeforeAction: function() {
+        //https://github.com/meteor-useraccounts/core/blob/master/Guide.md#accountstemplateslogout
+        AccountsTemplates.logout();
+        this.next();
+    }
+});
+
 Router.route('/', {
   name: 'home',
   template: 'home',
@@ -34,4 +56,10 @@ Router.route('/events/:_id', {
     data: function(){
         return Events.findOne({_id: this.params._id});
     }
+});
+
+Router.plugin('ensureSignedIn', {
+    //only: ['events_list','events_details','contacts_list','contacts_details']
+    except: _.pluck(AccountsTemplates.routes, 'name').concat(
+        ['home'])
 });
