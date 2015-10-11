@@ -1,3 +1,7 @@
 Meteor.publish('Events', function() {
-    return Events.find();
+    if(this.userId){
+        return Events.find({"user._id":this.userId});        
+    }else{
+        return [];
+    }
 });
