@@ -19,11 +19,11 @@
             <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
               <h2>{{name}}</h2>
               <p>{{when}}</p>
-              <div class="row">
-                 <div class="col"><p><i class="ion-ios-cart-outline assertive"></i> To buy <span class="assertive">{{this.total_to_buy}}</span> </p></div>
-                 <div class="col"><p><i class="ion-ios-box-outline energized"></i> Bought <span class="energized">{{this.total_bought}}</span> </p></div>
-                 <div class="col"><p><i class="ion-bag positive"></i> Wrapped <span class="positive">{{this.total_wrapped}}</span> </p></div>
-                 <div class="col"><p><i class="ion-happy-outline balanced"></i> Delivered <span class="balanced">{{this.total_delivered}}</span> </p></div>
+              <div class="list">
+                 <div class="item"><i class="ion-ios-cart-outline assertive"></i> To buy <span class="badge badge-assertive">{{this.total_to_buy}}</span></div>
+                 <div class="item"><i class="ion-ios-box-outline energized"></i> Bought <span class="badge badge-energized">{{this.total_bought}}</span></div>
+                 <div class="item"><i class="ion-bag positive"></i> Wrapped <span class="badge badge-positive">{{this.total_wrapped}}</span></div>
+                 <div class="item"><i class="ion-happy-outline balanced"></i> Delivered <span class="badge badge-balanced">{{this.total_delivered}}</span></div>
              </div>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
@@ -90,16 +90,16 @@
        <div class="bar bar-footer">
            <div class="button-bar">
                <a name="to_buy" class="button button-large" href="#"><i class="ion-ios-cart-outline assertive"></i>
-                   To Buy <span class="badge badge-assertive">{{this.total_to_buy}}</span>
+                   <span class="badge badge-assertive">{{this.total_to_buy}}</span>
                </a>
                <a name="bought" class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
-                   Bought <span class="badge badge-energized">{{this.total_bought}}</span>
+                   <span class="badge badge-energized">{{this.total_bought}}</span>
                </a>
                <a name="wrapped" class="button button-large" href="#"><i class="ion-bag positive"></i>
-                   Wrapped <span class="badge badge-positive">{{this.total_wrapped}}</span>
+                   <span class="badge badge-positive">{{this.total_wrapped}}</span>
                </a>
                <a name="delivered" class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
-                   Delivered <span class="badge badge-balanced">{{this.total_delivered}}</span>
+                   <span class="badge badge-balanced">{{this.total_delivered}}</span>
                </a>
            </div>
        </div>
