@@ -1,8 +1,4 @@
 <template name="contacts_list">
-    {{#contentFor "headerTitle"}}
-        <h1 class="title">Contacts</h1>
-    {{/contentFor}}
-
     {{#ionView}}
         {{#ionSubheaderBar}}
             {{#if currentUser}}
@@ -16,7 +12,7 @@
 
         <div class="list">
             {{#each all_fors}}
-            <a class="item item-icon-right item-button-right" href="/contacts/{{this}}">
+            <a class="item item-icon-right item-button-right" href="{{pathFor 'contacts_details' name=this}}">
               <h2>{{this}}</h2>
               <i class="icon ion-chevron-right assertive"></i>
            </a>
@@ -35,10 +31,6 @@
 
 
 <template name="contacts_details">
-    {{#contentFor "headerTitle"}}
-        <h1 class="title">{{my_events.to}}</h1>
-    {{/contentFor}}
-
     {{#ionView}}
     {{#ionSubheaderBar}}
         <a class="button button-assertive button-clear" href="{{pathFor 'contacts_list'}}">

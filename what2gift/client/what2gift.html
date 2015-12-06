@@ -7,18 +7,18 @@
 
 <template name="layout">
   {{#ionBody}}
-    {{> ionNavBar class="bar-assertive"}}
+    {{> ionNavBar class="bar-assertive" headerTitle=headerTitle}}
     {{#ionNavView}}
-      {{> yield}}
+      {{> Template.dynamic template=content}}
     {{/ionNavView}}
   {{/ionBody}}
 </template>
 
-<template name="home">
-    {{#contentFor "headerTitle"}}
-        <h1 class="title">What 2 Gift</h1>
-    {{/contentFor}}
+<template name="header_title">
+    <h1 class="title title-center" style="left: 0px; right: 0px;">{{title}}</h1>
+</template>
 
+<template name="home">
     {{#ionView}}
         {{#ionContent}}
         <div class="container-splash">

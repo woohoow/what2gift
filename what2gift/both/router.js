@@ -1,65 +1,83 @@
-Router.configure({
-  layoutTemplate: 'layout'
+FlowRouter.route('/', {
+    name: 'home',
+    // calls just before the action
+    // triggersEnter: [trackRouteEntry],
+
+    action: function(params, queryParams){
+        BlazeLayout.render("layout", {
+            headerTitle: 'header_title',
+            headerButtonRight: '', //'',
+            headerButtonLeft: '',
+            content: 'home'
+        });
+    },
+    // calls when when we decide to move to another route
+    // but calls before the next route started
+    // triggersExit: [trackRouteClose]
 });
 
 // https://github.com/meteor-useraccounts/core/issues/192
 AccountsTemplates.configureRoute('signIn', {
     name: 'login',
     path: '/login',
-    template: 'login',
-    layoutTemplate: 'layout',
     redirect: 'home',
 });
 AccountsTemplates.configureRoute('forgotPwd');
 AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('resetPwd');
 
-Router.route('/logout', {
+FlowRouter.route('/logout', {
     name: 'logout',
-    // template: 'login',
-    onBeforeAction: function() {
-        //https://github.com/meteor-useraccounts/core/blob/master/Guide.md#accountstemplateslogout
-        AccountsTemplates.logout();
-        this.next();
-    }
+    action: AccountsTemplates.logout
 });
 
-Router.route('/', {
-  name: 'home',
-  template: 'home',
-  'layoutTemplate': 'layout',
-});
-
-Router.route('/contacts', {
+FlowRouter.route('/contacts', {
     name: 'contacts_list',
-    template: 'contacts_list',
-    layoutTemplate: 'layout',
+    action: function(params, queryParams){
+        BlazeLayout.render("layout", {
+            headerTitle: 'header_title',
+            headerButtonRight: '', //'',
+            headerButtonLeft: '',
+            content: 'contacts_list',
+        });
+    },
 });
 
-Router.route('/contacts/:name', {
+FlowRouter.route('/contacts/:name', {
     name: 'contacts_details',
-    template: 'contacts_details',
-    layoutTemplate: 'layout',
+    action: function(params, queryParams){
+        BlazeLayout.render("layout", {
+            headerTitle: 'header_title',
+            headerButtonRight: '', //'',
+            headerButtonLeft: '',
+            content: 'contacts_details',
+        });
+    },
 });
 
 
-Router.route('/events', {
+FlowRouter.route('/events', {
     name: 'events_list',
-    template: 'events_list',
-    layoutTemplate: 'layout',
+    action: function(params, queryParams){
+        BlazeLayout.render("layout", {
+            headerTitle: 'header_title',
+            headerButtonRight: '', //'',
+            headerButtonLeft: '',
+            content: 'events_list',
+        });
+    },
 });
 
-Router.route('/events/:_id', {
+FlowRouter.route('/events/:_id', {
     name: 'events_details',
-    template: 'events_details',
-    layoutTemplate: 'layout',
-    data: function(){
-        return Events.findOne({_id: this.params._id});
-    }
+    action: function(params, queryParams){
+        BlazeLayout.render("layout", {
+            headerTitle: 'header_title',
+            headerButtonRight: '', //'',
+            headerButtonLeft: '',
+            content: 'events_details',
+        });
+    },
 });
 
-Router.plugin('ensureSignedIn', {
-    //only: ['events_list','events_details','contacts_list','contacts_details']
-    except: _.pluck(AccountsTemplates.routes, 'name').concat(
-        ['home'])
-});
+FlowRouter.triggers.enter([AccountsTemplates.ensureSignedIn], { except: ["home"] });

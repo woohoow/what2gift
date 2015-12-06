@@ -15,23 +15,32 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
-
-fourseven:scss@2.0.0
-meteoric:ionic-sass
-meteoric:ionicons-sass
-iron:router
-meteoric:ionic
-aldeed:autoform
-meteoric:autoform-ionic
-aldeed:collection2
 random
-valedaemon:circular-progress
+
+reload
+crosswalk
+
 dburles:collection-helpers
-stevezhu:lodash
-raix:handlebar-helpers
-accounts-password
-useraccounts:ionic
-useraccounts:iron-routing
-aldeed:template-extension
+ground:db #@1.0.0-alpha.3
 ongoworks:security
+wecare:ionic-flow
+hashwin:ionic-sass
+hashwin:ionicons-sass
+
+meteoric:autoform-ionic
+valedaemon:circular-progress
+stevezhu:lodash
+accounts-password
+aldeed:template-extension
+aldeed:autoform
+raix:handlebar-helpers
+useraccounts:ionic
+useraccounts:flow-routing
+kadira:flow-router
+kadira:blaze-layout
+arillo:flow-router-helpers
+fourseven:scss
+aldeed:collection2
 momentjs:moment
+appcache
+anthonyastige:ground-autoform

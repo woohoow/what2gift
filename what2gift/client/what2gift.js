@@ -12,9 +12,8 @@ Template.events_list.helpers({
 
 Template.events_edit_modal.helpers({
     'current_event': function() {
-        var template = Template.instance();
         return Events.findOne({
-            _id: template.data.id
+            _id: FlowRouter.getParam('_id')
         });
     }
 });
@@ -27,7 +26,8 @@ Template.events_details.onDestroyed(function(){
 Template.events_details.helpers({
     circularOptions: function() {
         var template = Template.instance();
-        Session.set('progress', Events.findOne(template.data._id).progress());
+        // console.log('progress', Events.findOne(FlowRouter.getParam('_id')));
+        Session.set('progress', Events.findOne(FlowRouter.getParam('_id')).progress());
         return {
             'canvasSize': 100,
             'arcWidth': 10,
@@ -74,7 +74,7 @@ Template.contacts_list.helpers({
         //get all fors names based on subscription
         var events = Events.find({},{fields:{"for":1,"items.for.name":1}}).fetch();
         var all_fors = _.union(_.flattenDeep(_.pluck(events,"for")));
-        return _.compact(
+        var res = _.compact(
                 _.union(
                     _.pluck(
                         _.flattenDeep(
@@ -83,13 +83,15 @@ Template.contacts_list.helpers({
                                 "for")),
                         'name'),
                 all_fors)).sort();
+        // console.log('contacts_list', res);
+        return res;
     }
 });
 
 Template.contacts_details.helpers({
     my_events: function(){
         //get all events for a user
-        var to = Router.current().params.name;
+        var to = FlowRouter.getParam('name');
         return {to:to, events:Events.find({"items.for.name":to},
             {fields:{"name":1, "when":1, "items.name":1, "items.for":1}}).fetch()};
     },
@@ -105,6 +107,19 @@ Template.contacts_details.helpers({
     }
 });
 
+Template.header_title.helpers({
+    'title': function(){
+        switch(FlowRouter.getRouteName()){
+            case 'home': return 'What2Gift';
+            case 'contacts_list': return 'Contacts';
+            case 'contacts_details': return FlowRouter.getParam('name');
+            case 'events_list': return 'Events';
+            case 'events_details': return Events.findOne(FlowRouter.getParam('_id')).name;
+            case 'login': return 'Login';
+        }
+    },
+});
+
 UI.registerHelper('FormatDate', function(date){
     return moment(date).format("ll");
-})
+});

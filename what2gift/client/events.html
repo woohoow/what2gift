@@ -1,8 +1,4 @@
 <template name="events_list">
-    {{#contentFor "headerTitle"}}
-        <h1 class="title">Events</h1>
-    {{/contentFor}}
-
     {{#ionView}}
         {{#ionSubheaderBar}}
             {{#if currentUser}}
@@ -19,7 +15,7 @@
         {{#ionContent}}
         <div class="list">
             {{#each events}}
-            <a class="item item-icon-right item-button-right" href="{{pathFor route='events_details'}}">
+            <a class="item item-icon-right item-button-right" href="{{pathFor 'events_details' _id=_id}}">
               <h2>{{name}}</h2>
               <p>{{FormatDate when}}</p>
               <div class="list">
@@ -43,10 +39,6 @@
 </template>
 
 <template name="events_details">
-    {{#contentFor "headerTitle"}}
-        <h1 class="title">{{name}}</h1>
-    {{/contentFor}}
-
     {{#ionView}}
         {{#ionSubheaderBar}}
             <a class="button button-assertive button-clear" href="{{pathFor 'events_list'}}">
@@ -117,7 +109,7 @@
 <!-- https://github.com/meteoric/contacts/blob/master/client/templates/_contactsNew.html -->
 <template name="events_new_modal">
     {{#ionModal customTemplate=true}}
-        {{#autoForm schema="Schema.Events" collection="Events" id="EventsForm" type="insert"}}
+        {{#autoForm schema="Schema.Events" collection="Events" id="EventsForm" groundType="insert" type="insert"}}
             <div class="bar bar-header bar-stable">
                 <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
                 <h2 class="title">New Event</h2>
@@ -132,7 +124,7 @@
 
 <template name="events_edit_modal">
     {{#ionModal customTemplate=true}}
-        {{#autoForm schema="Schema.Events" collection="Events" doc=current_event id="EventEditForm" type="update"}}
+        {{#autoForm schema="Schema.Events" collection="Events" doc=current_event id="EventEditForm" groundType="update" type="update"}}
             <div class="bar bar-header bar-stable">
                 <button class="button button-clear" data-dismiss="modal" type="button">Cancel</button>
                 <h2 class="title">Edit Event {{name}}</h2>

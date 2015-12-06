@@ -29,17 +29,44 @@ AccountsTemplates.addFields([
     pwd
 ]);
 
+AccountsTemplates.addField({
+  _id: 'terms',
+  type: 'checkbox',
+  template: "termsCheckbox",
+  errStr: "You must agree to the Terms and Conditions",
+  func: function(value) {
+    return !value;
+  },
+  negativeValidation: false
+});
 
 AccountsTemplates.configure({
+    // defaultTemplate: 'myCustomFullPageAtForm',
+    defaultLayout: 'layout',
+    defaultLayoutRegions: {
+        menubar: 'menubar',
+    },
+    defaultContentRegion: 'content',
     showForgotPasswordLink: true,
     enablePasswordChange: true,
     negativeValidation: false,
     negativeFeedback: false,
     positiveValidation: false,
     positiveFeedback: false,
-    homeRoutePath: 'events_list',
+    homeRoutePath: 'home', // use '/' if not working
     onLogoutHook: function(){
         console.log('accounts template logout hook triggered');
-        Router.go('home');
+        FlowRouter.go('home');
     },
+    onSubmitHook: function(error, state){
+        console.log('account login on submit');
+        if(!error){
+            console.log('success login');
+            // $('.ui.dropdown').dropdown();
+        }
+    }
+
+    // //terms
+    // termsUrl: 'terms',
+    // privacyUrl: 'privacy',
 });

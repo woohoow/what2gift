@@ -1,4 +1,4 @@
 $loading-font-size: 22px;
 
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionic-sass/_ionic';
-@import '.meteor/local/build/programs/server/assets/packages/meteoric_ionicons-sass/_ionicons';
+@import '{hashwin:ionic-sass}/_ionic';
+@import '{hashwin:ionicons-sass}/_ionicons';

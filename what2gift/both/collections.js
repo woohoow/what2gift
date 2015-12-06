@@ -2,6 +2,8 @@ Events = new Mongo.Collection('events', {
     idGeneration: 'STRING'
 });
 
+Ground.Collection(Meteor.users);
+
 Events.helpers({
     progress: function() {
         var total = _.sum(this.items, function(item) {
@@ -59,6 +61,8 @@ Events.helpers({
             this.for)).sort();
     },
 });
+
+Ground.Collection(Events);
 
 Schema = {};
 
