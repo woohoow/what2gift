@@ -1,8 +1,9 @@
-Events = new Mongo.Collection('events', {
+Events = new Ground.Collection('events', {
     idGeneration: 'STRING'
 });
 
-Ground.Collection(Meteor.users);
+// patched account-base
+// Ground.Collection(Meteor.users);
 
 Events.helpers({
     progress: function() {
@@ -62,7 +63,6 @@ Events.helpers({
     },
 });
 
-Ground.Collection(Events);
 
 Schema = {};
 
