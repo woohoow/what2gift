@@ -6,7 +6,7 @@ aldeed:simple-schema@1.4.0
 aldeed:template-extension@4.0.0
 anthonyastige:ground-autoform@0.0.6
 appcache@1.0.6
-arillo:flow-router-helpers@0.4.6
+arillo:flow-router-helpers@0.4.7
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -114,5 +114,5 @@ useraccounts:ionic@1.13.0
 valedaemon:circular-progress@1.0.0
 webapp@1.2.3
 webapp-hashing@1.0.5
-wecare:ionic-flow@0.2.6
+woohoow:blaze-ionic-flow@0.3.0
 zimme:active-route@2.3.2
