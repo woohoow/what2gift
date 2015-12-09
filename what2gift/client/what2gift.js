@@ -24,9 +24,11 @@ Template.events_details.onDestroyed(function(){
 });
 
 Template.events_details.helpers({
+    event: function(){
+        return Events.findOne(FlowRouter.getParam('_id'));
+    },
     circularOptions: function() {
-        var template = Template.instance();
-        // console.log('progress', Events.findOne(FlowRouter.getParam('_id')));
+         console.log('progress', Events.findOne(FlowRouter.getParam('_id')));
         Session.set('progress', Events.findOne(FlowRouter.getParam('_id')).progress());
         return {
             'canvasSize': 100,
@@ -121,5 +123,6 @@ Template.header_title.helpers({
 });
 
 UI.registerHelper('FormatDate', function(date){
+    console.log('format date', date, moment(date).format("ll"));
     return moment(date).format("ll");
 });

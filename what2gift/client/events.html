@@ -54,10 +54,10 @@
 
         <div class="list">
             <a class="item">
-                <h2>{{name}}</h2>
-                <p>{{FormatDate when}}
-                {{#with circularOptions}}
-                {{> circularProgress}}
+                <h2>{{event.name}}</h2>
+                <p>{{FormatDate event.when}}
+                {{#with event.circularOptions}}
+                {{> circularProgress this}}
                 {{/with}}
                 </p>
             </a>
@@ -65,7 +65,7 @@
 
        <div class="list list-inset">
           {{#unless $.Session.get 'activeItemStatus'}}
-          {{#each this.items}}
+          {{#each event.items}}
           <a class="item item-checkbox">
               {{name}}
               <p>Qty: {{total_items}}</p>
@@ -75,7 +75,7 @@
           <div class="item item-divider">
             {{$.Session.get 'activeItemStatus'}}
           </div>
-          {{#each this.items}}
+          {{#each event.items}}
           {{#with summary_status this}}
           <a class="item item-checkbox">
               {{this.name}}
@@ -89,16 +89,16 @@
        <div class="bar bar-footer">
            <div class="button-bar">
                <a name="to_buy" class="button button-large" href="#"><i class="ion-ios-cart-outline assertive"></i>
-                   <span class="badge badge-assertive">{{this.total_to_buy}}</span>
+                   <span class="badge badge-assertive">{{event.total_to_buy}}</span>
                </a>
                <a name="bought" class="button button-large" href="#"><i class="ion-ios-box-outline energized"></i>
-                   <span class="badge badge-energized">{{this.total_bought}}</span>
+                   <span class="badge badge-energized">{{event.total_bought}}</span>
                </a>
                <a name="wrapped" class="button button-large" href="#"><i class="ion-bag positive"></i>
-                   <span class="badge badge-positive">{{this.total_wrapped}}</span>
+                   <span class="badge badge-positive">{{event.total_wrapped}}</span>
                </a>
                <a name="delivered" class="button button-large" href="#"><i class="ion-happy-outline balanced"></i>
-                   <span class="badge badge-balanced">{{this.total_delivered}}</span>
+                   <span class="badge badge-balanced">{{event.total_delivered}}</span>
                </a>
            </div>
        </div>
